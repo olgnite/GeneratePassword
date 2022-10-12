@@ -1,0 +1,10 @@
+<div>
+    <div class="checkbox-container">
+         <div class="select-box">
+            <select (change)="selectBoxNumberOrLowerCase($event)">
+                <option value=""></option>
+                <option *ngFor="let i of selectBoxId" [value]="i.id">{{ i.label }}</option>
+            </select>
+         </div>
+    </div>
+</div>

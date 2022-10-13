@@ -12,7 +12,12 @@ export const symbols: ISymbolCheckBox[] = [
         id: 'lowercase',
         label: 'a-z',
         library: 'abcdefghijklmnopqrstuvwxyz',
-    }
+    },
+    {
+        id: 'symdols',
+        label: '!-?',
+        library: "!@#$%^&*-_=+\\|:;',.\<>/?~",
+    },
 ];
 
 @Injectable()
@@ -26,21 +31,14 @@ export class GenerateService {
     ) {
     }
 
-    public createNewPassword(): void {
-        for (let i = 0; i < this.lengthPassword; i++) {
-            this.newPassword += this.selectBoxArray[Math.floor(Math.random() * this.selectBoxArray.length)];
-        }
-    }
-
     public generatePassword(): string {
         this.newPassword = '';
-        if (this.selectBoxValue === 'numbers') {
-            this.selectBoxArray = symbols[0].library.split('');
-            this.createNewPassword();
-        } else {
-            if (this.selectBoxValue !== '') {
-                this.selectBoxArray = symbols[1].library.split('');
-                this.createNewPassword();
+        for (let i = 0; i < symbols.length; i++) {
+            if (this.selectBoxValue === symbols[i].id) {
+                this.selectBoxArray = symbols[i].library.split('');
+                for (let i = 0; i < this.lengthPassword; i++) {
+                    this.newPassword += this.selectBoxArray[Math.floor(Math.random() * this.selectBoxArray.length)];
+                }
             }
         }
         return this.newPassword;

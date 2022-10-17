@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { GenerateService, symbols } from '../service/generate.service';
+import {Component, Inject} from '@angular/core';
+import { GenerateService } from '../service/generate.service';
+import {DEFAULT_SYMBOLS} from "../tokens/symdols.token";
+import {ISymbolCheckBox} from "../interface/checkboxSymbol.interface";
 
 @Component({
     selector: 'app-selectbox',
@@ -7,9 +9,12 @@ import { GenerateService, symbols } from '../service/generate.service';
     styleUrls: ['./selectbox.component.scss'],
 })
 export class SelectBoxComponent {
-    public selectBoxId = symbols;
+    public selectBoxId: ISymbolCheckBox[] = this.symdols;
 
-    constructor(private _generateService: GenerateService) { }
+    constructor(
+		@Inject(DEFAULT_SYMBOLS) protected readonly symdols: ISymbolCheckBox[],
+		private _generateService: GenerateService
+    ) { }
 
     public selectBoxNumberOrLowerCase(event: any): void {
         this._generateService.selectBoxValueId(event.target.value);

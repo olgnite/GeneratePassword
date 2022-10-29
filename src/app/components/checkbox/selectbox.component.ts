@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import { GenerateService } from '../service/generate.service';
-import {DEFAULT_SYMBOLS} from "../tokens/symdols.token";
-import {ISymbolCheckBox} from "../interface/checkboxSymbol.interface";
+import { GenerateService } from '../../service/generate.service';
+import {DEFAULT_SYMBOLS} from "../../tokens/symdols.token";
+import {ISymbolCheckBox} from "../../interface/checkboxSymbol.interface";
 
 @Component({
     selector: 'app-selectbox',

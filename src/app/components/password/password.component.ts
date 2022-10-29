@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GenerateService } from '../service/generate.service';
+import { GenerateService } from '../../service/generate.service';
 
 @Component({
     selector: 'app-password',
